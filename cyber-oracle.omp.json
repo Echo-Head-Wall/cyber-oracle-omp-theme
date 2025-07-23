@@ -11,7 +11,7 @@
         {
           "type": "text",
           "style": "plain",
-          "template": "🧡💻<#FF6B35> [ORACLE ONLINE] </><#39FF14>Welp, ain't no time like the present! Let's go! ♪(´▽｀)</> 🏳️‍🌈"
+          "template": "🧡💻<#FF6B35> [ORACLE ONLINE] </><#39FF14>Welp, ain't no time like the present! Let's go! ♪(´▽｀) 🏳️‍🌈</>"
         }
       ]
     },
@@ -49,9 +49,10 @@
         {
           "type": "text",
           "style": "diamond",
-          "leading_diamond": "⚠️",
-          "trailing_diamond": "⚠️",
+          "leading_diamond": "\uE0B6",
+          "trailing_diamond": "\uE0B4",
           "foreground": "#FF0000",
+          "background": "#1a1a1a",
           "template": "{{ if .Env.PRODUCTION_SERVER }}🚨 PRODUCTION 🚨{{ end }}"
         },
         {
@@ -113,8 +114,8 @@
         {
           "type": "docker",
           "style": "diamond",
-          "leading_diamond": "",
-          "trailing_diamond": "",
+          "leading_diamond": "\uE0B6",
+          "trailing_diamond": "\uE0B4",
           "foreground": "#2496ED",
           "properties": {
             "display_mode": "context"
@@ -220,7 +221,6 @@
         {
           "type": "text",
           "style": "plain",
-          "foreground": "#FF6B35",
           "template": "<#39FF14>oracle</><#FF6B35>@</><#00FFFF>{{ .HostName }}</><#FF6B35>:</><#FFFF00>{{ .PWD }}</><#FF6B35>$ </>"
         }
       ]
