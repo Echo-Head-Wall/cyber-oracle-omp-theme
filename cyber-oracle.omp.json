@@ -6,24 +6,11 @@
   "blocks": [
     {
       "type": "prompt",
-      "alignment": "left",
-      "segments": [
-        {
-          "type": "text",
-          "style": "plain",
-          "template": "🧡💻<#FF6B35> [ORACLE ONLINE] </><#39FF14>Welp, ain't no time like the present! Let's go! ♪(´▽｀) 🏳️‍🌈</>"
-        }
-      ]
-    },
-    {
-      "type": "prompt",
       "alignment": "right",
       "segments": [
         {
           "type": "session",
-          "style": "diamond",
-          "leading_diamond": "◢",
-          "trailing_diamond": "◣",
+          "style": "plain",
           "foreground": "#00FFFF",
           "background": "#1a1a1a",
           "template": "{{ if .SSHSession }}🔗 SSH: {{ end }}🖥️ {{ .HostName }} {{ if .Env.ENVIRONMENT }}[{{ .Env.ENVIRONMENT }}]{{ end }}{{ if .Env.TMUX }}📺tmux{{ end }}{{ if .Env.STY }}📺screen{{ end }}"
@@ -48,9 +35,7 @@
         },
         {
           "type": "text",
-          "style": "diamond",
-          "leading_diamond": "\uE0B6",
-          "trailing_diamond": "\uE0B4",
+          "style": "plain",
           "foreground": "#FF0000",
           "background": "#1a1a1a",
           "template": "{{ if .Env.PRODUCTION_SERVER }}🚨 PRODUCTION 🚨{{ end }}"
@@ -113,9 +98,7 @@
         },
         {
           "type": "docker",
-          "style": "diamond",
-          "leading_diamond": "\uE0B6",
-          "trailing_diamond": "\uE0B4",
+          "style": "plain",
           "foreground": "#2496ED",
           "properties": {
             "display_mode": "context"
@@ -129,7 +112,7 @@
           "properties": {
             "parse_kubeconfig": true
           },
-          "template": "☸️{{ .Context }}{{ if .Namespace }}:{{ .Namespace }}{{ end }} "
+          "template": "⚙️{{ .Context }}{{ if .Namespace }}:{{ .Namespace }}{{ end }} "
         },
         {
           "type": "aws",
@@ -142,9 +125,9 @@
           "style": "plain",
           "foreground": "#FFFF00",
           "properties": {
-            "charged_icon": "🔋💚",
-            "charging_icon": "🔌⚡", 
-            "discharging_icon": "🔋📱"
+            "charged_icon": "🔋",
+            "charging_icon": "🔌", 
+            "discharging_icon": "🔋"
           },
           "template": " {{ .Icon }}{{ .Percentage }}% "
         },
