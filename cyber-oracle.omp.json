@@ -9,19 +9,6 @@
       "alignment": "right",
       "segments": [
         {
-          "type": "session",
-          "style": "plain",
-          "foreground": "#00FFFF",
-          "background": "#1a1a1a",
-          "template": "{{ if .SSHSession }}🔗 SSH: {{ end }}🖥️ {{ .HostName }} {{ if .Env.ENVIRONMENT }}[{{ .Env.ENVIRONMENT }}]{{ end }}{{ if .Env.TMUX }}📺tmux{{ end }}{{ if .Env.STY }}📺screen{{ end }}"
-        }
-      ]
-    },
-    {
-      "type": "prompt",
-      "alignment": "right",
-      "segments": [
-        {
           "type": "status",
           "style": "plain",
           "foreground": "#FF1493",
@@ -162,37 +149,10 @@
           "template": "{{ if .HEAD }}<#39FF14>git:(</>{{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .UpstreamIcon }} {{ .UpstreamIcon }}{{ end }}<#39FF14>)</>{{ if .Working.Changed }} <#FF1493>●{{ .Working.String }}</>{{ end }}{{ if .Staging.Changed }} <#FFFF00>+{{ .Staging.String }}</>{{ end }}{{ if .Untracked }} <#E94E2D>?{{ .Untracked }}</>{{ end }}{{ end }}"
         },
         {
-          "type": "os",
-          "style": "plain",
-          "foreground": "#00FFFF",
-          "properties": {
-            "windows": "WIN",
-            "linux": "LNX", 
-            "macos": "OSX",
-            "display_distro_name": false
-          },
-          "template": "[{{ .Icon }}]"
-        },
-        {
-          "type": "shell",
-          "style": "plain",
-          "foreground": "#FFB6C1",
-          "template": "{{ .Name }} "
-        },
-        {
-          "type": "time",
-          "style": "plain",
-          "foreground": "#00FFFF",
-          "properties": {
-            "time_format": "15:04"
-          },
-          "template": " {{ .CurrentDate | date .Format }} "
-        },
-        {
           "type": "text",
           "style": "plain",
-          "foreground": "#FF1493",
-          "template": "💊"
+          "foreground": "#00FFFF",
+          "template": "{{ if .Env.SSH_CONNECTION }}🔗{{ end }}🖥️{{ .HostName }} {{ if .Env.ENVIRONMENT }}[{{ .Env.ENVIRONMENT }}]{{ end }}{{ if .Env.TMUX }}📺tmux{{ end }}{{ if .Env.STY }}📺screen{{ end }} <#FFB6C1>[{{ .Shell }}]</> <#00FFFF>{{ .CurrentDate | date \"15:04\" }}</> <#FF1493>💊</>"
         }
       ]
     },
