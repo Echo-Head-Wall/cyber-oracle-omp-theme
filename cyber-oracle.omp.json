@@ -1,0 +1,237 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 3,
+  "final_space": true,
+  "console_title_template": "{{ .Shell }} in {{ .Folder }} - Oracle's Navigation Terminal 🧡",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "template": "🧡💻<#FF6B35> [ORACLE ONLINE] </><#39FF14>Welp, ain't no time like the present! Let's go! ♪(´▽｀)</> 🏳️‍🌈"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "type": "session",
+          "style": "diamond",
+          "leading_diamond": "◢",
+          "trailing_diamond": "◣",
+          "foreground": "#00FFFF",
+          "background": "#1a1a1a",
+          "template": "{{ if .SSHSession }}🔗 SSH: {{ end }}🖥️ {{ .HostName }} {{ if .Env.ENVIRONMENT }}[{{ .Env.ENVIRONMENT }}]{{ end }}{{ if .Env.TMUX }}📺tmux{{ end }}{{ if .Env.STY }}📺screen{{ end }}"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "type": "status",
+          "style": "plain",
+          "foreground": "#FF1493",
+          "template": "{{ if gt .Code 0 }}💔 Error {{ .Code }} - Hey, listen! Something went wrong!{{ end }}"
+        },
+        {
+          "type": "root",
+          "style": "plain",
+          "foreground": "#FF0000",
+          "template": "{{ if .Root }}⚠️ ROOT ACCESS - Be careful! ⚠️{{ end }}"
+        },
+        {
+          "type": "text",
+          "style": "diamond",
+          "leading_diamond": "⚠️",
+          "trailing_diamond": "⚠️",
+          "foreground": "#FF0000",
+          "template": "{{ if .Env.PRODUCTION_SERVER }}🚨 PRODUCTION 🚨{{ end }}"
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#FFA500",
+          "template": "{{ if .Env.STAGING_SERVER }}🚧 STAGING{{ end }}"
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#32CD32",
+          "template": "{{ if .Env.DEV_SERVER }}🧪 DEV{{ end }}"
+        },
+        {
+          "type": "python",
+          "style": "plain",
+          "foreground": "#9A4AE2",
+          "properties": {
+            "display_version": true,
+            "fetch_version": true,
+            "display_mode": "context"
+          },
+          "template": "🐍{{ .Full }} "
+        },
+        {
+          "type": "node",
+          "style": "plain",
+          "foreground": "#68D391",
+          "properties": {
+            "display_version": false,
+            "fetch_version": true,
+            "display_mode": "context"
+          },
+          "template": "⬢{{ .Major }}.{{ .Minor }} "
+        },
+        {
+          "type": "rust",
+          "style": "plain",
+          "foreground": "#E94E2D",
+          "properties": {
+            "display_version": true,
+            "fetch_version": true,
+            "display_mode": "context"
+          },
+          "template": "🦀{{ .Full }} "
+        },
+        {
+          "type": "go",
+          "style": "plain",
+          "foreground": "#00ADD8",
+          "properties": {
+            "display_version": true,
+            "fetch_version": true,
+            "display_mode": "context"
+          },
+          "template": "🐹{{ .Full }} "
+        },
+        {
+          "type": "docker",
+          "style": "diamond",
+          "leading_diamond": "",
+          "trailing_diamond": "",
+          "foreground": "#2496ED",
+          "properties": {
+            "display_mode": "context"
+          },
+          "template": "🐳{{ .Context }} "
+        },
+        {
+          "type": "kubectl",
+          "style": "plain",
+          "foreground": "#326CE5",
+          "properties": {
+            "parse_kubeconfig": true
+          },
+          "template": "☸️{{ .Context }}{{ if .Namespace }}:{{ .Namespace }}{{ end }} "
+        },
+        {
+          "type": "aws",
+          "style": "plain",
+          "foreground": "#FFA500",
+          "template": "☁️{{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }} "
+        },
+        {
+          "type": "battery",
+          "style": "plain",
+          "foreground": "#FFFF00",
+          "properties": {
+            "charged_icon": "🔋💚",
+            "charging_icon": "🔌⚡", 
+            "discharging_icon": "🔋📱"
+          },
+          "template": " {{ .Icon }}{{ .Percentage }}% "
+        },
+        {
+          "type": "executiontime",
+          "style": "plain",
+          "foreground": "#FF6B35",
+          "properties": {
+            "threshold": 500,
+            "style": "round"
+          },
+          "template": "{{ if gt .Ms 500 }}⏱️{{ .FormattedMs }}{{ end }}"
+        },
+        {
+          "type": "path",
+          "style": "plain",
+          "foreground": "#39FF14",
+          "properties": {
+            "style": "agnoster_short"
+          },
+          "template": "📂 {{ .Path }} "
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "foreground": "#FF6B35",
+          "properties": {
+            "branch_icon": "🌿",
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          },
+          "template": "{{ if .HEAD }}<#39FF14>git:(</>{{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .UpstreamIcon }} {{ .UpstreamIcon }}{{ end }}<#39FF14>)</>{{ if .Working.Changed }} <#FF1493>●{{ .Working.String }}</>{{ end }}{{ if .Staging.Changed }} <#FFFF00>+{{ .Staging.String }}</>{{ end }}{{ if .Untracked }} <#E94E2D>?{{ .Untracked }}</>{{ end }}{{ end }}"
+        },
+        {
+          "type": "os",
+          "style": "plain",
+          "foreground": "#00FFFF",
+          "properties": {
+            "windows": "WIN",
+            "linux": "LNX", 
+            "macos": "OSX",
+            "display_distro_name": false
+          },
+          "template": "[{{ .Icon }}]"
+        },
+        {
+          "type": "shell",
+          "style": "plain",
+          "foreground": "#FFB6C1",
+          "template": "{{ .Name }} "
+        },
+        {
+          "type": "time",
+          "style": "plain",
+          "foreground": "#00FFFF",
+          "properties": {
+            "time_format": "15:04"
+          },
+          "template": " {{ .CurrentDate | date .Format }} "
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#FF1493",
+          "template": "💊"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#FF6B35",
+          "template": "<#39FF14>oracle</><#FF6B35>@</><#00FFFF>{{ .HostName }}</><#FF6B35>:</><#FFFF00>{{ .PWD }}</><#FF6B35>$ </>"
+        }
+      ]
+    }
+  ],
+  "secondary_prompt": {
+    "foreground": "#FF6B35",
+    "template": "<#39FF14>Oracle:</> <#FF6B35>Compiling thoughts... Need more coffee? ☕</> "
+  },
+  "transient_prompt": {
+    "foreground": "#39FF14", 
+    "template": "<#39FF14>></> "
+  }
+}
